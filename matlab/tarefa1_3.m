@@ -1,26 +1,23 @@
-% 1.3. Negativo (intensidade na saída = 255 – intensidade na entrada)
+% 1.3. Negativo (intensidade na saï¿½da = 255 ï¿½ intensidade na entrada)
 function tarefa1_3()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lenna.png');
     
     originalImage = imread(filePath);
-    
     negativeImage = getNegative(originalImage);
+    backToOriginalImage = getNegative(negativeImage);
         
     % Ploting
-    figure();    
-    subplot(1,2,1), imshow(originalImage,[]), title('Original image')
-    subplot(1,2,2), imshow(negativeImage,[]), title('Negative')    
+    figure();        
+    subplot(1,3,1), imshow(originalImage,[]), title('Original image')
+    subplot(1,3,2), imshow(negativeImage,[]), title('Negative image')
+    subplot(1,3,3), imshow(backToOriginalImage,[]), title('Back to original image')
     
 end
 
 function output = getNegative(input)
-    %input = im2double(input)
-    %recCh = input(:,:,1);
-    output = zeros(size(input));
-
-    for idx = 1:numel(input)
-        output(idx)=255-input(idx);
-    end
+    % MatLab shortcut
+    % output = imcomplement(input);
     
+    output = (255 - input);
 end
