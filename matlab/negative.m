@@ -1,7 +1,10 @@
-% read in tiff image and convert it to double format
-my_image = im2double(imread('C:\Users\italo\Pictures\lenna.png'));
+% Crossplatform path
+assetsDir = ['..' filesep 'assets' filesep];
+fileName = strcat(assetsDir, 'lenna.png');
+
+my_image = im2double(imread(fileName));
 my_image = my_image(:,:,1);
-% allocate space for thresholded image
+
 image_thresholded = zeros(size(my_image));
 % loop over all rows and columns
 for ii=1:size(my_image,1)
