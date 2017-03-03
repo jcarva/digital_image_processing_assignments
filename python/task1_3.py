@@ -13,6 +13,8 @@ def main():
     utils.display_multiple_images(['Lenna', 'Negative Lenna', 'Back to Original'],
                                   [original_image, negative_image, back_to_original])
 
+    utils.wait_key_and_destroy_windows()
+
 
 def _invert_image(image):
     return 255 - image
