@@ -10,7 +10,7 @@ def main():
     negative_image = _invert_image(original_image)
     back_to_original = _invert_image(negative_image)
 
-    utils.display_multiple_images(['Lenna', 'Negative Lena', 'Back to Original'],
+    utils.display_multiple_images(['Lenna', 'Negative Lenna', 'Back to Original'],
                                   [original_image, negative_image, back_to_original])
 
 

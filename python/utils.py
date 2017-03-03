@@ -1,5 +1,5 @@
 import cv2
-
+import numpy as np
 
 def load_image(filename):
     return cv2.imread('../assets/' + filename)
@@ -22,6 +22,21 @@ def split_channels(image):
     return image[:, :, 0], \
         image[:, :, 1], \
         image[:, :, 2]
+
+
+def merge_channels(blue, green, red):
+    n_cols = blue[0].size
+    n_rows = blue[1].size
+
+    output = []
+
+    for col in range(0, n_cols):
+        output.append([None] * n_rows)
+
+        for row in range(0, n_rows):
+            output[col][row] = [blue[col][row], green[col][row], red[col][row]]
+
+    return np.array(output)
 
 
 def display_multiple_images(titles, images):

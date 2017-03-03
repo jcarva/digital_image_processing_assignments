@@ -15,6 +15,10 @@ def main():
     utils.display_single_image('Green Channel', green)
     utils.display_single_image('Red Channel', red)
 
+    back_to_original = utils.merge_channels(blue, green, red)
+
+    utils.display_single_image('Merged', back_to_original)
+
     utils.wait_key_and_destroy_windows()
 
 
