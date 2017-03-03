@@ -28,16 +28,16 @@ def _rgb2yiq(image):
     # I = 0.596 R - 0.274 G - 0.322 B
     # Q = 0.211 R - 0.523 G + 0.312 B
 
-    output[:, :, 0] = 0.299 * red + 0.587 * green + 0.114 * blue
+    output[:, :, 2] = 0.299 * red + 0.587 * green + 0.114 * blue
     output[:, :, 1] = 0.596 * red - 0.274 * green - 0.322 * blue
-    output[:, :, 2] = 0.211 * red - 0.523 * green + 0.312 * blue
+    output[:, :, 0] = 0.211 * red - 0.523 * green + 0.312 * blue
 
     return output
 
 
 def _yiq2rgb(image):
     output = np.copy(image)
-    y, i, q = utils.split_channels(image)
+    q, i, y = utils.split_channels(image)
 
     # From https://www.mathworks.com/help/images/ref/ntsc2rgb.html
     # R = 1 Y  + 0.956 I + 0.621 Q
