@@ -25,16 +25,17 @@ def split_channels(image):
 
 
 def merge_channels(blue, green, red):
-    n_cols = blue[0].size
-    n_rows = blue[1].size
+    # Same as np.dstack((blue, green, red))
+    n_rows = blue[0].size
+    n_cols = blue[1].size
 
     output = []
 
-    for col in range(0, n_cols):
-        output.append([None] * n_rows)
+    for row in range(0, n_rows):
+        output.append([None] * n_cols)
 
-        for row in range(0, n_rows):
-            output[col][row] = [blue[col][row], green[col][row], red[col][row]]
+        for col in range(0, n_cols):
+            output[row][col] = [blue[row][col], green[row][col], red[row][col]]
 
     return np.array(output)
 
