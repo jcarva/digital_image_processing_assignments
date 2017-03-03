@@ -1,5 +1,6 @@
-% 1.3. Negativo (intensidade na sa�da = 255 � intensidade na entrada)
-function tarefa1_3()
+% 1.3. Negativo
+% (intensidade na saída = 255 - intensidade na entrada)
+function task1_3()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lenna.png');
     

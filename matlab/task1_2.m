@@ -1,6 +1,6 @@
-% 1.2 ExibiÁ„o de bandas individuais (R, G e B) como imagens monocrom·ticas ou
-% coloridas (em tons de R, G ou B, respectivamente)
-function tarefa1_2()
+% 1.2 Exibi√ß√£o de bandas individuais (R, G e B) como imagens
+% monocrom√°ticas ou coloridas (em tons de R, G ou B, respectivamente)
+function task1_2()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lenna.png');
     
@@ -8,13 +8,12 @@ function tarefa1_2()
     
     [redCh, greenCh, blueCh] = separateChannels(originalImage);
     
-    threshold = zeros(size(originalImage, 1), size(originalImage, 2));
-    [redColor, greenColor, blueColor] = getColoredImage(redCh, greenCh, blueCh, threshold);
+    zeroes = zeros(size(originalImage, 1), size(originalImage, 2));
+    [redColor, greenColor, blueColor] = getColoredImage(redCh, greenCh, blueCh, zeroes);
     
     concatImage = cat(3, redCh, greenCh, blueCh);
 
     % Ploting
-    
     fig = figure(1);
     set (fig, 'Units', 'normalized', 'Position', [0,0,1,1]);
     
@@ -38,8 +37,8 @@ function [redCh, greenCh, blueCh] = separateChannels(input)
     blueCh = input(:,:,3);
 end
 
-function [justRed, justGreen, justBlue] = getColoredImage(redCh, greenCh, blueCh, z)    
-    justRed = cat(3, redCh, z, z);
-    justGreen = cat(3, z, greenCh, z);
-    justBlue = cat(3, z, z, blueCh);
+function [justRed, justGreen, justBlue] = getColoredImage(redCh, greenCh, blueCh, zeroes)    
+    justRed = cat(3, redCh, zeroes, zeroes);
+    justGreen = cat(3, zeroes, greenCh, zeroes);
+    justBlue = cat(3, zeroes, zeroes, blueCh);
 end

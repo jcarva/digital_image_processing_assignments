@@ -1,5 +1,5 @@
 % 1.7. Filtros de Média e Mediana de ordem escolhida pelo usuário
-function tarefa1_7()
+function task1_7()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lenna.png');
     
@@ -7,7 +7,6 @@ function tarefa1_7()
     averageImage = averageFilter(originalImage, 16);
     medianImage = medianFilter(originalImage, 16);
     
-        
     % Ploting
     figure();        
     subplot(1,3,1), imshow(originalImage,[]), title('Original image')
@@ -24,6 +23,7 @@ end
 
 function output = medianFilter(input, alpha)
     % MatLab shortcut
-    input = rgb2gray(input);
-    output = medfilt2(input, [alpha alpha]);
+    output(:,:,1) = medfilt2(input(:,:,1), [alpha alpha]);
+    output(:,:,2) = medfilt2(input(:,:,2), [alpha alpha]);
+    output(:,:,3) = medfilt2(input(:,:,3), [alpha alpha]);
 end
