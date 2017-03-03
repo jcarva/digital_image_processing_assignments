@@ -15,7 +15,8 @@ def main():
 
 
 def _invert_image(input):
-    return (255 - input)
+    return 255 - input
 
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    main()

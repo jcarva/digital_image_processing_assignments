@@ -29,4 +29,6 @@ def _yiq2rgb(image):
 def _rgb2yiq(image):
     conversion = [1]
 
-if __name__ == "__main__": main()
+
+if __name__ == "__main__":
+    main()
