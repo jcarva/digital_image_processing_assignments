@@ -1,10 +1,15 @@
 # coding=UTF-8
-# 1.1. Conversão RGB-YIQ-RGB
-# (cuidado com os limites de R, G e B!)
+# 1.3. Negativo
 
 import cv2
 import utils
 
-img = utils.load_image('lenna.png')
+def task1_3():
+    originalImage = utils.load_image('lenna.png')
+    negativeImage = getNegative(originalImage)
+    utils.display_multiple_images(['Lenna', 'Negative Lena'], [originalImage, negativeImage])
 
-utils.display_single_image('Lenna', img)
+def getNegative(input):
+    return (255 - input)
+
+task1_3()
