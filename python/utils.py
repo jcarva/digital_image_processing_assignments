@@ -1,8 +1,13 @@
 import cv2
 import numpy as np
 
+
 def load_image(filename):
     return cv2.imread('../assets/' + filename)
+
+
+def save_image(filename, image):
+    cv2.imwrite('../output/' + filename, image)
 
 
 def display_single_image(title, image):
@@ -38,6 +43,11 @@ def merge_channels(blue, green, red):
             output[row][col] = [blue[row][col], green[row][col], red[row][col]]
 
     return np.array(output)
+
+
+def fit_matrix_in_interval(matrix, min_value, max_value):
+    matrix[matrix < min_value] = min_value
+    matrix[matrix > max_value] = max_value
 
 
 def display_multiple_images(titles, images):
