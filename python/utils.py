@@ -3,7 +3,7 @@ import numpy as np
 
 
 def load_image(filename):
-    return cv2.imread('../assets/' + filename)
+    return cv2.imread('../assets/' + filename).astype('int16')
 
 
 def save_image(filename, image):
@@ -11,7 +11,7 @@ def save_image(filename, image):
 
 
 def display_single_image(title, image):
-    cv2.imshow(title, image)
+    cv2.imshow(title, image.astype('uint8'))
 
 
 def wait_key_and_destroy_windows():
@@ -45,7 +45,7 @@ def merge_channels(blue, green, red):
     return np.array(output)
 
 
-def fit_matrix_in_interval(matrix, min_value, max_value):
+def fit_matrix_in_interval(matrix, min_value=0, max_value=255):
     matrix[matrix < min_value] = min_value
     matrix[matrix > max_value] = max_value
 

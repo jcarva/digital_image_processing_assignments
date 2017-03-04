@@ -22,7 +22,7 @@ def main():
 
 
 def _rgb2yiq(image):
-    output = np.empty_like(image, dtype='int16')
+    output = np.empty_like(image)
     blue, green, red = utils.split_channels(image)
 
     # From https://www.mathworks.com/help/images/ref/rgb2ntsc.html
@@ -37,14 +37,13 @@ def _rgb2yiq(image):
     output[:, :, 1] = 0.596 * red - 0.274 * green - 0.322 * blue
     output[:, :, 0] = 0.211 * red - 0.523 * green + 0.312 * blue
 
-    utils.fit_matrix_in_interval(output, 0, 255)
-    output = output.astype('uint8')
+    utils.fit_matrix_in_interval(output)
 
     return output
 
 
 def _yiq2rgb(image):
-    output = np.empty_like(image, dtype='int16')
+    output = np.empty_like(image)
     q, i, y = utils.split_channels(image)
 
     # From https://www.mathworks.com/help/images/ref/ntsc2rgb.html
@@ -56,8 +55,7 @@ def _yiq2rgb(image):
     output[:, :, 1] = y - 0.272 * i - 0.647 * q
     output[:, :, 0] = y - 1.106 * i + 1.703 * q
 
-    utils.fit_matrix_in_interval(output, 0, 255)
-    output = output.astype('uint8')
+    utils.fit_matrix_in_interval(output)
 
     return output
 

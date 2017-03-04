@@ -1,5 +1,6 @@
 # coding=UTF-8
 # 1.3. Negativo
+# (intensidade na saída = 255 - intensidade na entrada)
 
 import cv2
 import utils
