@@ -15,7 +15,8 @@ def main():
     utils.display_single_image('Green channel mono', green_mono)
     utils.display_single_image('Red channel mono', red_mono)
 
-    zeroes = np.zeros(image.shape[0:2])
+    zeroes = np.zeros(image.shape[0:2], dtype='uint8')
+
     blue = utils.merge_channels(blue_mono, zeroes, zeroes)
     green = utils.merge_channels(zeroes, green_mono, zeroes)
     red = utils.merge_channels(zeroes, zeroes, red_mono)
