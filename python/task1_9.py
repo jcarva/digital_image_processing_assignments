@@ -9,8 +9,8 @@ import numpy as np
 def main():
     image = utils.load_image('lenna.png')
 
-    filter1 = filter(image, [[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
-    filter2 = filter(image, [[0, 0, 0], [0, 1, 0], [0, 0, -1]])
+    filter1 = _filter(image, [[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+    filter2 = _filter(image, [[0, 0, 0], [0, 1, 0], [0, 0, -1]])
 
     utils.display_single_image('Original', image)
     utils.display_multiple_images(['Filter1', 'Filter2'], [filter1, filter2])
@@ -18,7 +18,7 @@ def main():
     utils.wait_key_and_destroy_windows()
 
 
-def filter(image, kernel):
+def _filter(image, kernel):
     kernel_size = len(kernel[0])
     border_size = kernel_size//2
     width, height, chanels = image.shape
