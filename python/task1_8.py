@@ -1,9 +1,7 @@
 # coding=UTF-8
 #1.8. Filtros de detecção de bordas Sobel e Laplaciano
 
-import cv2
 import utils
-import numpy as np
 
 
 def main():

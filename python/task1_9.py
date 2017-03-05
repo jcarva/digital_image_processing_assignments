@@ -1,9 +1,7 @@
 # coding=UTF-8
 #1.9 Aplicar filtros descritos na atividade
 
-import cv2
 import utils
-import numpy as np
 
 
 def main():
