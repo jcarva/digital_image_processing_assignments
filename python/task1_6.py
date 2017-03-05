@@ -1,6 +1,6 @@
 # coding=UTF-8
-# 1.6. Limiarizao aplicada sobre Y, com limiar m e duas opes: a) m
-# escolhido pelo usuio; b) m = mia de valores da banda Y;
+# 1.6. Limiarização aplicada sobre Y, com limiar m e duas opções: a) m
+# escolhido pelo usuáio; b) m = média de valores da banda Y;
 
 import numpy as np
 import utils
