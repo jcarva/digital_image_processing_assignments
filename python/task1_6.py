@@ -9,11 +9,11 @@ import utils
 def main():
     image = utils.load_image('lenna.png')
     utils.display_single_image('Original', image)
+    grayscale_image = _rbg2gray(image)
 
     threshold_value = 200
-    mean_value = np.mean(image)
-
-    grayscale_image = _rbg2gray(image)
+    mean_value = np.mean(grayscale_image)
+    
     threshold_user_image = _segment_y(grayscale_image, threshold_value)
     threshold_mean_image = _segment_y(grayscale_image, mean_value)
 
@@ -25,12 +25,8 @@ def main():
 
 
 def _segment_y(image, m):
-    output = np.copy(image)
-    output[output > m] = 255
-    output[output <= m] = 0
-
+    output = (image > m)*255    
     return output
-
 
 def _rbg2gray(image):
     # https://en.wikipedia.org/wiki/Grayscale
