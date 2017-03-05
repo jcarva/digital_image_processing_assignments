@@ -21,20 +21,15 @@ def main():
 def _filter(image, kernel):
     kernel_size = len(kernel[0])
     border_size = kernel_size//2
-    width, height, chanels = image.shape
-    resized_image = cv2.copyMakeBorder(image,
-                              border_size,
-                              border_size,
-                              border_size,
-                              border_size,
-                              cv2.BORDER_REFLECT_101)
-    output = np.zeros((width, height, chanels), np.int)
+    rows, columns, chanels = image.shape
+    resized_image = utils.add_border(image, border_size, 127)
+    output = np.zeros((rows, columns, chanels), np.int)
 
-    for h in range(border_size, height+border_size):
-        for w in range(border_size, width+border_size):
+    for c in range(border_size, columns+border_size):
+        for r in range(border_size, rows+border_size):
 
-            valid_pixel = resized_image[w-border_size:w+border_size+1, h-border_size:h+border_size+1]
-            output[w-border_size, h-border_size] = np.array([np.sum(valid_pixel[:, :, 0]*kernel),
+            valid_pixel = resized_image[r-border_size:r+border_size+1, c-border_size:c+border_size+1]
+            output[r-border_size, c-border_size] = np.array([np.sum(valid_pixel[:, :, 0]*kernel),
                                                              np.sum(valid_pixel[:, :, 1]*kernel),
                                                              np.sum(valid_pixel[:, :, 2]*kernel)])
 
