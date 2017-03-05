@@ -50,6 +50,24 @@ def fit_matrix_in_interval(matrix, min_value=0, max_value=255):
     matrix[matrix > max_value] = max_value
 
 
+def image_filter(image, kernel):
+    kernel_size = len(kernel[0])
+    border_size = kernel_size//2
+    rows, columns, chanels = image.shape
+    resized_image = copy_add_border(image, border_size, 127)
+    output = np.zeros((rows, columns, chanels), dtype=np.int)
+
+    for c in range(border_size, columns+border_size):
+        for r in range(border_size, rows+border_size):
+            valid_pixel = resized_image[r-border_size:r+border_size+1, c-border_size:c+border_size+1]
+            output[r-border_size, c-border_size] = np.array([np.sum(valid_pixel[:, :, 0]*kernel),
+                                                             np.sum(valid_pixel[:, :, 1]*kernel),
+                                                             np.sum(valid_pixel[:, :, 2]*kernel)])
+
+    fit_matrix_in_interval(output)
+    return np.uint8(output)
+
+
 def copy_add_border(image, border_size=1, color=0):
     border_size *= 2
     rows, columns, chanels = image.shape
