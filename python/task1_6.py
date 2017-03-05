@@ -24,8 +24,7 @@ def _segment_y_mean(image):
 
 def _segment_y(image, m):
     #output = np.empty_like(image)
-    output = (image > m).astype(int)*256
-    print output
+    output = (image > m)*255    
     return output
 
 def _rbg2gray(image):
