@@ -3,30 +3,21 @@
 
 import cv2
 import utils
+import numpy as np
 
 
 def main():
-    original_image = utils.load_image('lenna.png')
-    sobel__x_image = _sobel_x_filter(original_image, 0.4, 5)
-    sobel__y_image = _sobel_y_filter(original_image, 0.4, 5)
-    laplacian_image = _laplacian_filter(original_image, 0.4, 5)
+    image = utils.load_image('lenna.png')
 
-    utils.display_multiple_images(['Lenna', 'Sobel_X Lenna', 'Sobel_Y Lenna', 'Laplacian Lenna'],
-                                  [original_image, sobel__x_image, sobel__y_image, laplacian_image])
+    laplacian_image = utils.image_filter(image, [[0, 1, 0], [1, -4, 1], [0, 1, 0]])
+    sobel__x_image = utils.image_filter(image, [[1, 2, 1], [0, 0, 0], [-1, -2, -1]])
+    sobel__y_image = utils.image_filter(image, [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])
+
+    utils.display_single_image('Original', image)
+    utils.display_multiple_images(['Sobel_X Lenna', 'Sobel_Y Lenna', 'Laplacian Lenna'],
+                                  [sobel__x_image, sobel__y_image, laplacian_image])
 
     utils.wait_key_and_destroy_windows()
-
-
-def _sobel_x_filter(image, scale=0.5, kernel_size=3, ddepth=cv2.CV_32F, delta=0):
-    return cv2.Sobel(image, scale=scale, dx=1, dy=0, ksize=kernel_size, ddepth=ddepth, delta=delta, borderType=cv2.BORDER_DEFAULT)
-
-
-def _sobel_y_filter(image, scale=0.5, kernel_size=3, ddepth=cv2.CV_32F, delta=0):
-    return cv2.Sobel(image, scale=scale, dx=0, dy=1, ksize=kernel_size, ddepth=ddepth, delta=delta, borderType=cv2.BORDER_DEFAULT)
-
-
-def _laplacian_filter(image, scale=0.5, kernel_size=3, ddepth=cv2.CV_32F, delta=0):
-    return cv2.Laplacian(image, scale=scale, ksize=kernel_size, ddepth=ddepth, delta=delta)
 
 
 if __name__ == "__main__":
