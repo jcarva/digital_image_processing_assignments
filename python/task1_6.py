@@ -27,6 +27,7 @@ def main():
 def _segment_y(image, m):
     output = np.copy(image)
     output[output > m] = 255
+    output[output <= m] = 0
 
     return output
 
