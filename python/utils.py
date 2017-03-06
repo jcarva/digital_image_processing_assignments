@@ -104,5 +104,5 @@ def display_multiple_images(titles, images):
         return False
     else:
         for i in range(0, len(images)):
-            cv2.imshow(titles[i], images[i])
+            display_single_image(titles[i], images[i])
 
