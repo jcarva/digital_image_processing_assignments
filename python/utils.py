@@ -60,46 +60,6 @@ def image_shape(image):
     return rows, columns, channels
 
 
-def image_filter(image, kernel):
-    kernel_size = len(kernel[0])
-    border_size = kernel_size//2
-    rows, columns, channels = image_shape(image)
-
-    resized_image = copy_add_border(image, border_size, 127)
-    output = np.zeros((rows, columns, channels), dtype=np.int)
-
-    for c in range(border_size, columns + border_size):
-        for r in range(border_size, rows + border_size):
-            region = resized_image[r - border_size:r + border_size + 1, c - border_size:c + border_size + 1]
-
-            if channels == 1:
-                output[r - border_size, c - border_size] = np.sum(region[:, :] * kernel)
-            else:
-                output[r - border_size, c - border_size] = np.array([np.sum(region[:, :, 0] * kernel),
-                                                                     np.sum(region[:, :, 1] * kernel),
-                                                                     np.sum(region[:, :, 2] * kernel)])
-
-    fit_matrix_in_interval(output)
-    return np.uint8(output)
-
-
-def median_filter(image, size):
-    border_size = size//2
-    rows, columns, channels = image.shape
-    resized_image = copy_add_border(image, border_size, 127)
-    output = np.zeros((rows, columns, channels), dtype=np.int)
-
-    for c in range(border_size, columns + border_size):
-        for r in range(border_size, rows + border_size):
-            valid_pixel = resized_image[r - border_size:r + border_size + 1, c - border_size:c + border_size + 1]
-            output[r - border_size, c - border_size] = np.array([np.median(valid_pixel[:, :, 0]),
-                                                                 np.median(valid_pixel[:, :, 1]),
-                                                                 np.median(valid_pixel[:, :, 2])])
-
-    fit_matrix_in_interval(output)
-    return np.uint8(output)
-
-
 def copy_add_border(image, border_size=1, color=0):
     border_size *= 2
     rows, columns, chanels = image_shape(image)
@@ -112,6 +72,8 @@ def copy_add_border(image, border_size=1, color=0):
     fit_matrix_in_interval(output)
     return np.uint8(output)
 
+def average_kernel(kernel_size):
+    return np.full((kernel_size, kernel_size), 1/float(kernel_size * kernel_size))
 
 def display_multiple_images(titles, images):
     if len(titles) != len(images):

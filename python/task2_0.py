@@ -5,6 +5,7 @@
 # Discuta o experimento no relatório
 
 import utils
+import filter
 import numpy as np
 import noise
 
@@ -15,10 +16,10 @@ def main():
     sp_image = noise.salt_pepper(image, 0.05)
     utils.display_single_image('Salt&Pepper Noise', sp_image)
 
-    filter1 = utils.image_filter(sp_image, np.full((3, 3), 1/9.0))
+    filter1 = filter.apply_kernel(sp_image, utils.average_kernel(3))
     utils.display_single_image('Average Filter', filter1)
 
-    filter2 = utils.median_filter(sp_image, 3)
+    filter2 = filter.median_filter(sp_image, 3)
     utils.display_single_image('Median Filter', filter2)
 
     utils.wait_key_and_destroy_windows()
