@@ -11,9 +11,7 @@ def main():
     image = utils.load_image('lenna.png')
 
     sp_image = _salt_pepper(image, 0.05)
-    utils.display_single_image('Salt&Pepper Noise', sp_image)    
-
-    print _mean_filter(3)
+    utils.display_single_image('Salt&Pepper Noise', sp_image)        
 
     # filter1 = _filter(sp_image, [[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
     # utils.display_single_image('Mean Filter', filter1)    
