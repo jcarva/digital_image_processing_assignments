@@ -18,8 +18,8 @@ def main():
     filter1 = utils.image_filter(sp_image, np.full((3, 3), 1/9.0))
     utils.display_single_image('Mean Filter', filter1)
 
-    # filter2 = _filter(sp_image, [[0.0, 0.125, 0.0], [0.125, 0.25, 0.125], [0.0, 0.125, 0.0]])
-    # utils.display_single_image('Median Filter', filter2)
+    filter2 = utils.median_filter(sp_image, 3)
+    utils.display_single_image('Median Filter', filter2)
 
     utils.wait_key_and_destroy_windows()
 
