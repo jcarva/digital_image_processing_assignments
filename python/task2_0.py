@@ -16,7 +16,7 @@ def main():
     utils.display_single_image('Salt&Pepper Noise', sp_image)
 
     filter1 = utils.image_filter(sp_image, np.full((3, 3), 1/9.0))
-    utils.display_single_image('Mean Filter', filter1)
+    utils.display_single_image('Average Filter', filter1)
 
     filter2 = utils.median_filter(sp_image, 3)
     utils.display_single_image('Median Filter', filter2)
