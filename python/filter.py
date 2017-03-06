@@ -24,7 +24,7 @@ def _filter(image, kernel, operation=np.sum):
             region = resized_image[r - border_size:r + border_size + 1, c - border_size:c + border_size + 1]
 
             if channels == 1:
-                output[r - border_size, c - border_size] = np.sum(region[:, :] * kernel)
+                output[r - border_size, c - border_size] = operation(region[:, :] * kernel)
             else:
                 output[r - border_size, c - border_size] = np.array([operation(region[:, :, 0] * kernel),
                                                                      operation(region[:, :, 1] * kernel),
