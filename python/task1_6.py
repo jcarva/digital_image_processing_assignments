@@ -4,12 +4,13 @@
 
 import numpy as np
 import utils
+import color
 
 
 def main():
     image = utils.load_image('lenna.png')
     utils.display_single_image('Original', image)
-    grayscale_image = _rbg2gray(image)
+    grayscale_image = color.rbg2gray(image)
 
     threshold_value = 200
     mean_value = np.mean(grayscale_image)
@@ -25,18 +26,7 @@ def main():
 
 
 def _segment_y(image, m):
-    output = (image > m)*255    
-    return output
-
-def _rbg2gray(image):
-    # https://en.wikipedia.org/wiki/Grayscale
-    # Y ′ = 0.299 R ′ + 0.587 G ′ + 0.114 B
-
-    blue, green, red = utils.split_channels(image)
-    output = 0.299 * red + 0.587 * green + 0.114 * blue
-
-    utils.fit_matrix_in_interval(output)
-
+    output = (image > m) * 255
     return output
 
 if __name__ == "__main__":
