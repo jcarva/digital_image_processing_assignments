@@ -10,6 +10,8 @@ def main():
 
     average_image = filter.apply_kernel(image, utils.average_kernel(9))
 
+    # TODO add median
+
     utils.display_single_image('Original', image)
     utils.display_multiple_images(['Average'], [average_image])
 

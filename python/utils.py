@@ -62,8 +62,8 @@ def image_shape(image):
 
 def copy_add_border(image, border_size=1, color=0):
     border_size *= 2
-    rows, columns, chanels = image_shape(image)
-    output = np.full((rows + border_size, columns + border_size, chanels), color, dtype=np.int)
+    rows, columns, channels = image_shape(image)
+    output = np.full((rows + border_size, columns + border_size, channels), color, dtype=np.int)
 
     for c in range(border_size, columns + border_size):
         for r in range(border_size, rows + border_size):
@@ -72,8 +72,10 @@ def copy_add_border(image, border_size=1, color=0):
     fit_matrix_in_interval(output)
     return np.uint8(output)
 
+
 def average_kernel(kernel_size):
     return np.full((kernel_size, kernel_size), 1/float(kernel_size * kernel_size))
+
 
 def display_multiple_images(titles, images):
     if len(titles) != len(images):
