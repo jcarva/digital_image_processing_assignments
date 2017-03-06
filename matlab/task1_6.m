@@ -3,24 +3,35 @@
 function task1_6()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lenna.png');
+    originalImage = imread(filePath);
     
-    grayScaleImage = rgb2gray(imread(filePath));
-    
-    FIXED_M = 100;    
+    FIXED_M = 0.2;
+    yiqImage = rgb2ntsc(originalImage);
+    grayScaleImage = yiqImage(:,:,1);
          
     % Segmented Y channel with fixed M
     fixedMOutput = binarySegmention(grayScaleImage, FIXED_M);
+    fixedMImage = yiqImage;
+    fixedMImage(:,:,1) = fixedMOutput;
+    fixedMBack2RGB = ntsc2rgb(fixedMImage);
         
     % Segmented Y channel with M = mean(Y)
     meanM = mean(grayScaleImage(:));
     meanMOutput = binarySegmention(grayScaleImage, meanM);
+    meanMImage = yiqImage;
+    meanMImage(:,:,1) = fixedMOutput;
+    meanMBack2RGB = ntsc2rgb(meanMImage);
 
     % Ploting
     figure();        
-    subplot(3,1,1), imshow(grayScaleImage), title('Original image')    
-    subplot(3,1,2), imshow(fixedMOutput), title(strcat('Segmented Y with Fixed M = ',num2str(FIXED_M)))        
-    subplot(3,1,3), imshow(meanMOutput), title(strcat('Segmented Y with M = mean(Y) = ',num2str(meanM)))
-    
+    subplot(1,3,1), imshow(originalImage), title('Original image')    
+    subplot(1,3,2), imshow(fixedMOutput), title(strcat('Segmented Y with Fixed M = ',num2str(FIXED_M)))        
+    subplot(1,3,3), imshow(fixedMBack2RGB), title('Back to RGB')
+       
+    figure();        
+    subplot(1,3,1), imshow(originalImage), title('Original image')        
+    subplot(1,3,2), imshow(meanMOutput), title(strcat('Segmented Y with M = mean(Y) = ',num2str(meanM)))
+    subplot(1,3,3), imshow(meanMBack2RGB), title('Back to RGB')
 end
 
 function output = binarySegmention(input, m)
