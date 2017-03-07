@@ -35,5 +35,5 @@ function task1_6()
 end
 
 function output = binarySegmention(input, m)
-    output = (input>m);            
+    output = (input > m);
 end
