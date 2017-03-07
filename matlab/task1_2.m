@@ -29,6 +29,8 @@ function task1_2()
 
     subplot(2,4,8), imshow(concatImage), title('Back to original image')
     
+    saveas(fig,strcat('output',filesep,mfilename,'.png'));
+    
 end
 
 function [redCh, greenCh, blueCh] = separateChannels(input)

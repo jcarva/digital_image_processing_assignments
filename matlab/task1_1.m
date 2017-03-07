@@ -9,8 +9,11 @@ function task1_1()
     back2RGB = ntsc2rgb(yiqImage);
     
     % Ploting
-    figure();    
+    fig=figure();    
     subplot(1,3,1), imshow(originalImage,[]), title('Original image')
     subplot(1,3,2), imshow(yiqImage,[]), title('YIQ image')
     subplot(1,3,3), imshow(back2RGB,[]), title('Back to RGB image')
+    strcat('output',filesep,mfilename,'.png')
+    
+    saveas(fig,strcat('output',filesep,mfilename,'.png'));
 end

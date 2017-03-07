@@ -8,11 +8,12 @@ function task1_7()
     medianImage = medianFilter(originalImage, 16);
     
     % Ploting
-    figure();        
+    fig=figure();        
     subplot(1,3,1), imshow(originalImage,[]), title('Original image')
     subplot(1,3,2), imshow(averageImage,[]), title('Average image')
     subplot(1,3,3), imshow(medianImage,[]), title('Median image')
     
+    saveas(fig,strcat('output',filesep,mfilename,'.png'));
 end
 
 function output = averageFilter(input, hsize)

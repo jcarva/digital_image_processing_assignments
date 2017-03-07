@@ -31,20 +31,23 @@ function task2_0()
     SMed = medfilt2(S,[3 3]);   
     
     % Ploting
-    fig = figure(1); set (fig, 'Units', 'normalized', 'Position', [0,0,1,1]);    
+    fig = figure(1); set(fig, 'Units', 'normalized', 'Position', [0,0,1,1]);    
     %subplot(4,3,1), imshow(I,[]), title('Original image')
     subplot(1,3,1), imshow(SP,[]), title('Salt&Pepper Noise')
     subplot(1,3,2), imshow(SPAvrg,[]), title('Average Filter')
     subplot(1,3,3), imshow(SPMed,[]), title('Median Filter')
     
-    fig = figure(2); set (fig, 'Units', 'normalized', 'Position', [0,0,1,1]);   
+    fig2 = figure(2); set(fig2, 'Units', 'normalized', 'Position', [0,0,1,1]);   
     subplot(1,3,1), imshow(G,[]), title('Gaussian Noise')
     subplot(1,3,2), imshow(GAvrg,[]), title('Average Filter')
     subplot(1,3,3), imshow(GMed,[]), title('Median Filter')
     
-    fig = figure(3); set (fig, 'Units', 'normalized', 'Position', [0,0,1,1]);   
+    fig3 = figure(3); set(fig3, 'Units', 'normalized', 'Position', [0,0,1,1]);   
     subplot(1,3,1), imshow(S,[]), title('Speckle Noise')
     subplot(1,3,2), imshow(SAvrg,[]), title('Average Filter')
     subplot(1,3,3), imshow(SMed,[]), title('Median Filter')
     
+    saveas(fig,strcat('output',filesep,mfilename,'_1.png'));
+    saveas(fig2,strcat('output',filesep,mfilename,'_2.png'));
+    saveas(fig3,strcat('output',filesep,mfilename,'_3.png'));
 end

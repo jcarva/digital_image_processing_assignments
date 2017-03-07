@@ -8,10 +8,12 @@ function task1_9()
     filter2Image = filter2(originalImage);
     
     % Ploting
-    figure();        
+    fig=figure();        
     subplot(1,3,1), imshow(originalImage,[]), title('Original image')
     subplot(1,3,2), imshow(filter1Image,[]), title('Filter1 image')
     subplot(1,3,3), imshow(filter2Image,[]), title('Filter2 image')
+    
+    saveas(fig,strcat('output',filesep,mfilename,'.png'));
     
 end
 
