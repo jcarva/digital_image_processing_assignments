@@ -19,7 +19,7 @@ function task1_6()
     meanM = mean(grayScaleImage(:));
     meanMOutput = binarySegmention(grayScaleImage, meanM);
     meanMImage = yiqImage;
-    meanMImage(:,:,1) = fixedMOutput;
+    meanMImage(:,:,1) = meanMOutput;
     meanMBack2RGB = ntsc2rgb(meanMImage);
 
     % Ploting
