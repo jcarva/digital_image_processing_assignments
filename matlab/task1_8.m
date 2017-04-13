@@ -1,7 +1,7 @@
 % 1.8. Filtros de detecção de bordas Sobel e Laplaciano
 function task1_8()
     assetsDir = ['..' filesep 'assets' filesep];
-    filePath = strcat(assetsDir, 'quadrado.png');
+    filePath = strcat(assetsDir, 'bicycle.png');
     
     originalImage = imread(filePath);
     sobel_X_Image = sobel_X_Filter(originalImage);
