@@ -3,14 +3,15 @@
 # (cuidado com os limites de R, G e B!)
 
 import numpy as np
+import color
 import utils
 
 
 def main():
     image = utils.load_image('lenna.png')
 
-    yiq = utils.rgb2yiq(image)
-    back_to_original = utils.yiq2rgb(yiq)
+    yiq = color.rgb2yiq(image)
+    back_to_original = color.yiq2rgb(yiq)
 
     utils.display_single_image('Original', image)
     utils.display_single_image('YIQ', yiq)

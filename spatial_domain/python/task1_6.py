@@ -11,19 +11,19 @@ def main():
     image = utils.load_image('lenna.png')
 
     yiq_image = color.rgb2yiq(image)
-    grayscale_image = color.yiq2rgb(image)[:, :, 0]
+    grayscale_image = yiq_image[:, :, 2]   # Y
 
     threshold_value = 255 * 0.2
     mean_value = np.mean(grayscale_image)
 
     threshold_user_image = _segment(grayscale_image, threshold_value)
     original_threshold_user_image = np.copy(yiq_image)
-    original_threshold_user_image[:, :, 0] = threshold_user_image
+    original_threshold_user_image[:, :, 2] = threshold_user_image
     original_threshold_user_image = color.yiq2rgb(original_threshold_user_image)
 
     threshold_mean_image = _segment(grayscale_image, mean_value)
     original_threshold_mean_image = np.copy(yiq_image)
-    original_threshold_mean_image[:, :, 0] = threshold_mean_image
+    original_threshold_mean_image[:, :, 2] = threshold_mean_image
     original_threshold_mean_image = color.yiq2rgb(original_threshold_mean_image)
 
     utils.display_single_image('Original Image', image)
@@ -40,7 +40,8 @@ def main():
 
 
 def _segment(image, m):
-    output = (image > m) * 255
+    output = (image >= m) * 255
+
     return output
 
 if __name__ == "__main__":
