@@ -2,7 +2,7 @@ import numpy as np
 
 
 def extract(image):
-    histogram = np.zeros(255, dtype=np.int)
+    histogram = np.zeros(256, dtype=np.int)
 
     for pixel in np.nditer(image):
         histogram[pixel] += 1
@@ -15,7 +15,7 @@ def equalize(histogram, image):
     output = np.empty_like(image)
 
     total_pixels = image.shape[0] * image.shape[1]
-    max_intensity = np.max(image)
+    max_intensity = 255  # L - 1
 
     lut = np.empty_like(histogram)
     sum = 0

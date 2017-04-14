@@ -14,11 +14,11 @@ def main():
     equalized_histogram = hist.extract(equalized_image)
 
     plt.figure(1)
-    plt.bar(range(0, 255), histogram)
+    plt.bar(range(0, 256), histogram)
     plt.title('Original Histogram')
 
     plt.figure(2)
-    plt.bar(range(0, 255), equalized_histogram)
+    plt.bar(range(0, 256), equalized_histogram)
     plt.title('Equalized Histogram')
 
     plt.show(block=False)
