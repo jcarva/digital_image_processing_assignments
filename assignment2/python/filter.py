@@ -3,7 +3,6 @@ import utils
 
 
 def average(image, kernel):
-
     rows, columns, channels = utils.image_shape(image)
 
     if channels == 1:
