@@ -33,19 +33,19 @@ def main():
     sub1.set_title('Original')
 
     sub2 = plt.subplot(2, 3, 2)
-    sub2.set_title('Average k=3x1 on k=1x3')
+    sub2.set_title('k=3x1 on k=1x3')
 
     sub3 = plt.subplot(2, 3, 3)
-    sub3.set_title('Average k=25x1 on k=1x3')
+    sub3.set_title('k=25x1 on k=1x3')
 
     sub4 = plt.subplot(2, 3, 4)
-    sub4.set_title('Average k=3x1 on k=1x25')
+    sub4.set_title('k=3x1 on k=1x25')
 
     sub5 = plt.subplot(2, 3, 5)
-    sub5.set_title('Average k=25x1 on k=1x25')
+    sub5.set_title('k=25x1 on k=1x25')
 
     sub6 = plt.subplot(2, 3, 6)
-    sub6.set_title('Average k=13x1 on k=1x53')
+    sub6.set_title('k=13x1 on k=1x53')
 
     if channels == 1:
         sub1.imshow(image, cmap='gray')
@@ -57,8 +57,8 @@ def main():
     else:
         sub1.imshow(image)
         sub2.imshow(image_out3x1_on_1x3)
-        sub3.imshow(image_out25x1_on_1x3)
-        sub4.imshow(image_out3x1_on_1x25)
+        sub3.imshow(image_out3x1_on_1x25)
+        sub4.imshow(image_out25x1_on_1x3)
         sub5.imshow(image_out25x1_on_1x25)
         sub6.imshow(image_out13x1_on_1x53)
 

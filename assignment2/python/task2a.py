@@ -24,19 +24,19 @@ def main():
     sub1.set_title('Original')
 
     sub2 = plt.subplot(2, 3, 2)
-    sub2.set_title('Average k=3x3')
+    sub2.set_title('k=3x3')
 
     sub3 = plt.subplot(2, 3, 3)
-    sub3.set_title('Average k=3x25')
+    sub3.set_title('k=3x25')
 
     sub4 = plt.subplot(2, 3, 4)
-    sub4.set_title('Average k=25x3')
+    sub4.set_title('k=25x3')
 
     sub5 = plt.subplot(2, 3, 5)
-    sub5.set_title('Average k=25x25')
+    sub5.set_title('k=25x25')
 
     sub6 = plt.subplot(2, 3, 6)
-    sub6.set_title('Average k=13x53')
+    sub6.set_title('k=13x53')
 
     if channels == 1:
         sub1.imshow(image, cmap='gray')
