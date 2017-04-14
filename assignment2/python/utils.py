@@ -1,9 +1,14 @@
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def load_image(filename):
     return cv2.imread('../assets/' + filename).astype('int16')
+
+
+def plt_load_image(filename):
+    return plt.imread('../assets/' + filename)
 
 
 def display_single_image(title, image):
@@ -45,5 +50,17 @@ def fit_matrix_in_interval(matrix, min_value=0, max_value=255):
     matrix[matrix < min_value] = min_value
     matrix[matrix > max_value] = max_value
 
-def average_kernel(kernel_size):
-    return np.full((kernel_size, kernel_size), 1/float(kernel_size * kernel_size))
+
+def m_n_average_kernel(m, n):
+    return np.full((m, n), 1/float(m * n))
+
+
+def image_shape(image):
+    if len(image.shape) == 3:
+        rows, columns, channels = image.shape
+    else:
+        rows, columns = image.shape
+        channels = 1
+
+    return rows, columns, channels
+
