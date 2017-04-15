@@ -5,12 +5,11 @@ function task2a()
     filePath = strcat(assetsDir, 'lena_headey_1024.jpg');
     originalImage = imread(filePath);
     
-    averageImage_3x3 = averageFilter(originalImage, [3 3]);
-    averageImage_3x25 = averageFilter(originalImage, [3 25]);
-    averageImage_25x3 = averageFilter(originalImage, [25 3]);
-    averageImage_25x25 = averageFilter(originalImage, [25 25]);
-    averageImage_13x53 = averageFilter(originalImage, [13 53]);
-    
+    averageImage_3x3 = averageTimer('[Average k=3x3]', @averageFilter, originalImage, [3 3]);
+    averageImage_3x25 = averageTimer('[Average k=3x25]', @averageFilter, originalImage, [3 25]);
+    averageImage_25x3 = averageTimer('[Average k=25x3]', @averageFilter, originalImage, [25 3]);
+    averageImage_25x25 = averageTimer('[Average k=25x25]', @averageFilter, originalImage, [25 25]);
+    averageImage_13x53 = averageTimer('[Average k=13x53]', @averageFilter, originalImage, [13 53]);
     
     % Ploting
     fig = figure(1);
@@ -30,4 +29,11 @@ function output = averageFilter(input, hsize)
     % MatLab shortcut
     h = fspecial('average', hsize);
     output = imfilter(input,h);
+end
+
+function output = averageTimer(name, f, arg1, arg2)
+    tic;
+    output = f(arg1, arg2);
+    t = toc;
+    fprintf('%s: %f seconds.\n', name, t);
 end

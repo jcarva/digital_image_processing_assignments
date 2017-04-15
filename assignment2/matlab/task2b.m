@@ -7,20 +7,18 @@ function task2b()
     originalImage = imread(filePath);
     
     %1xN
-    image_out1x3 = averageFilter(originalImage, [1 3]);
-    image_out1x25 = averageFilter(originalImage, [1 25]);
-    image_out1x53 = averageFilter(originalImage, [1 53]);
-    
+    image_out1x3 = averageTimer('[Average k=1x3]', @averageFilter, originalImage, [1 3]);
+    image_out1x25 = averageTimer('[Average k=1x25]', @averageFilter, originalImage, [1 25]);
+    image_out1x53 = averageTimer('[Average k=1x53]', @averageFilter, originalImage, [1 53]);
     
     %Mx1
-    image_out3x1_on_1x3 = averageFilter(image_out1x3, [3 1]);
-    image_out25x1_on_1x3 = averageFilter(image_out1x3, [25 1]);
+    image_out3x1_on_1x3 = averageTimer('[Average k=3x1 on k=1x3]', @averageFilter, image_out1x3, [3 1]);
+    image_out25x1_on_1x3 = averageTimer('[Average k=25x1 on k=1x3]', @averageFilter, image_out1x3, [25 1]);
 
-    image_out3x1_on_1x25 = averageFilter(image_out1x25, [3 1]);
-    image_out25x1_on_1x25 = averageFilter(image_out1x25, [25 1]);
+    image_out3x1_on_1x25 = averageTimer('[Average k=3x1 on k=1x25]', @averageFilter, image_out1x25, [3 1]);
+    image_out25x1_on_1x25 = averageTimer('[Average k=25x1 on k=1x25]', @averageFilter, image_out1x25, [25 1]);
     
-    image_out13x1_on_1x53 = averageFilter(image_out1x53, [13 1]);
-    
+    image_out13x1_on_1x53 = averageTimer('[Average k=13x1 on k=1x53]', @averageFilter, image_out1x53, [13 1]);
     
     % Ploting
     fig = figure(1);
@@ -41,4 +39,11 @@ function output = averageFilter(input, hsize)
     % MatLab shortcut
     h = fspecial('average', hsize);
     output = imfilter(input,h);
+end
+
+function output = averageTimer(name, f, arg1, arg2)
+    tic;
+    output = f(arg1, arg2);
+    t = toc;
+    fprintf('%s: %f seconds.\n', name, t);
 end
