@@ -26,8 +26,8 @@ function task2b()
 
     subplot(2,3,1), imshow(originalImage), title('Original image')
     subplot(2,3,2), imshow(image_out3x1_on_1x3), title('k=3x1 on k=1x3')
-    subplot(2,3,3), imshow(image_out25x1_on_1x3), title('k=25x1 on k=1x3')
-    subplot(2,3,4), imshow(image_out3x1_on_1x25), title('k=3x1 on k=1x25')
+    subplot(2,3,3), imshow(image_out3x1_on_1x25), title('k=3x1 on k=1x25')
+    subplot(2,3,4), imshow(image_out25x1_on_1x3), title('k=25x1 on k=1x3')
     subplot(2,3,5), imshow(image_out25x1_on_1x25), title('k=25x1 on k=1x25')
     subplot(2,3,6), imshow(image_out13x1_on_1x53), title('k=13x1 on k=1x53')
     
