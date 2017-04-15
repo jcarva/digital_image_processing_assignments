@@ -37,10 +37,10 @@ def main():
     sub2.set_title('k=3x1 on k=1x3')
 
     sub3 = plt.subplot(2, 3, 3)
-    sub3.set_title('k=25x1 on k=1x3')
+    sub3.set_title('k=3x1 on k=1x25')
 
     sub4 = plt.subplot(2, 3, 4)
-    sub4.set_title('k=3x1 on k=1x25')
+    sub4.set_title('k=25x1 on k=1x3')
 
     sub5 = plt.subplot(2, 3, 5)
     sub5.set_title('k=25x1 on k=1x25')
@@ -51,8 +51,8 @@ def main():
     if channels == 1:
         sub1.imshow(image, cmap='gray')
         sub2.imshow(image_out3x1_on_1x3, cmap='gray')
-        sub3.imshow(image_out25x1_on_1x3, cmap='gray')
-        sub4.imshow(image_out3x1_on_1x25, cmap='gray')
+        sub3.imshow(image_out3x1_on_1x25, cmap='gray')
+        sub4.imshow(image_out25x1_on_1x3, cmap='gray')
         sub5.imshow(image_out25x1_on_1x25, cmap='gray')
         sub6.imshow(image_out13x1_on_1x53, cmap='gray')
     else:
