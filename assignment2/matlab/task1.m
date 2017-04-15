@@ -14,8 +14,9 @@ function task1()
         grayIm = originalImage;
     end
 
-    histEq = histeq(grayIm, 256);    
-    histExp = imadjust(grayIm,stretchlim(grayIm),[]);
+    histEq = histeq(grayIm, 256);
+    % Tolerance
+    histExp = imadjust(grayIm,stretchlim(grayIm, [0 1]),[]);
 
     % Ploting
     fig = figure(1);
