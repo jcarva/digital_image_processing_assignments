@@ -1,7 +1,29 @@
 from random import randrange
+import numpy as np
 
 
 def median(array):
+    if type(array).__module__ == np.__name__:
+        array = array.flatten()
+
+    length = len(array)
+    array.sort()
+
+    # Odd
+    if length % 2 == 1:
+        position = length / 2
+        return array[position]
+
+    # Even
+    else:
+        position = len(array) / 2
+        return array[position-1] + array[position] / 2.0
+
+
+def quick_median(array):
+    if type(array).__module__ == np.__name__:
+        array = array.flatten()
+
     length = len(array)
 
     # Odd

@@ -6,7 +6,7 @@ import histogram as hist
 import matplotlib.pyplot as plt
 
 def main():
-    image = utils.load_image('underexposed2.jpg')
+    image = utils.load_image('lenna.png')
 
     image = color.rbg2gray(image)
     histogram = hist.extract(image)

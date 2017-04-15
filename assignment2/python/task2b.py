@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import filter
 import utils
+import timer
 
 
 def main():
@@ -13,19 +14,19 @@ def main():
     rows, columns, channels = utils.image_shape(image)
 
     #1xN
-    image_out1x3 = filter.average(image, utils.m_n_average_kernel(1, 3))
-    image_out1x25 = filter.average(image, utils.m_n_average_kernel(1, 25))
+    image_out1x3 = timer.count('[Average k=1x3]', filter.average, [image, utils.m_n_average_kernel(1, 3)])
+    image_out1x25 = timer.count('[Average k=1x25]', filter.average, [image, utils.m_n_average_kernel(1, 25)])
 
-    image_out1x53 = filter.average(image, utils.m_n_average_kernel(1, 53))
+    image_out1x53 = timer.count('[Average k=1x53]', filter.average, [image, utils.m_n_average_kernel(1, 53)])
 
     #Mx1
-    image_out3x1_on_1x3 = filter.average(image_out1x3, utils.m_n_average_kernel(3, 1))
-    image_out25x1_on_1x3 = filter.average(image_out1x3, utils.m_n_average_kernel(25, 1))
+    image_out3x1_on_1x3 = timer.count('[Average k=3x1 on k=1x3]', filter.average, [image_out1x3, utils.m_n_average_kernel(3, 1)])
+    image_out25x1_on_1x3 = timer.count('[Average k=25x1 on k=1x3]', filter.average, [image_out1x3, utils.m_n_average_kernel(25, 1)])
 
-    image_out3x1_on_1x25 = filter.average(image_out1x25, utils.m_n_average_kernel(3, 1))
-    image_out25x1_on_1x25 = filter.average(image_out1x25, utils.m_n_average_kernel(25, 1))
+    image_out3x1_on_1x25 = timer.count('[Average k=3x1 on k=1x25]', filter.average, [image_out1x25, utils.m_n_average_kernel(3, 1)])
+    image_out25x1_on_1x25 = timer.count('[Average k=25x1 on k=1x25]', filter.average, [image_out1x25, utils.m_n_average_kernel(25, 1)])
 
-    image_out13x1_on_1x53 = filter.average(image_out1x53, utils.m_n_average_kernel(13, 1))
+    image_out13x1_on_1x53 = timer.count('[Average k=13x1 on k=1x53]', filter.average, [image_out1x53, utils.m_n_average_kernel(13, 1)])
 
     fig = plt.figure(figsize=(6, 4))
 

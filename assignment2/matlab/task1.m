@@ -1,18 +1,23 @@
-% 1. Para uma imagem com baixo contraste, implemente as operações:
-%   a. Equalização de histograma;
-%   b. Expansão de histograma.
+% 1. Para uma imagem com baixo contraste, implemente as operaÃ§Ãµes:
+%   a. EqualizaÃ§Ã£o de histograma;
+%   b. ExpansÃ£o de histograma.
 function task1()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lenna.png');
     originalImage = imread(filePath);
-        
-    yiqImage = rgb2ntsc(originalImage);
-    % Get grayscale image
-    grayIm = yiqImage(:,:,1);
-        
-    histEq = histeq(grayIm);    
-    histExp = imadjust(grayIm,stretchlim(grayIm),[]);
-    
+
+    [~, ~, channels] = size(originalImage);
+
+    if channels == 3
+        grayIm = rgb2gray(originalImage);
+    else 
+        grayIm = originalImage;
+    end
+
+    histEq = histeq(grayIm, 256);
+    % Tolerance
+    histExp = imadjust(grayIm,stretchlim(grayIm, [0 1]),[]);
+
     % Ploting
     figure();        
     subplot(1,2,1), imshow(grayIm), title('Original image')
