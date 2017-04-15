@@ -1,7 +1,11 @@
 from random import randrange
+import numpy as np
 
 
 def median(array):
+    if type(array).__module__ == np.__name__:
+        array = array.flatten()
+
     length = len(array)
 
     # Odd
