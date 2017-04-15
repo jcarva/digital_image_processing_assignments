@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import filter
 import utils
-
+import timer
 
 def main():
     image = utils.plt_load_image("lena_headey_1024.jpg")
@@ -12,11 +12,11 @@ def main():
 
     rows, columns, channels = utils.image_shape(image)
 
-    image_out3x3 = filter.average(image, utils.m_n_average_kernel(3, 3))
-    image_out3x25 = filter.average(image, utils.m_n_average_kernel(3, 25))
-    image_out25x3 = filter.average(image, utils.m_n_average_kernel(25, 3))
-    image_out25x25 = filter.average(image, utils.m_n_average_kernel(25, 25))
-    image_out13x53 = filter.average(image, utils.m_n_average_kernel(13, 53))
+    image_out3x3 = timer.count('[Average k=3x3]', filter.average, [image, utils.m_n_average_kernel(3, 3)])
+    image_out3x25 = timer.count('[Average k=3x25]', filter.average, [image, utils.m_n_average_kernel(3, 25)])
+    image_out25x3 = timer.count('[Average k=25x3]', filter.average, [image, utils.m_n_average_kernel(25, 3)])
+    image_out25x25 = timer.count('[Average k=25x25]', filter.average, [image, utils.m_n_average_kernel(25, 25)])
+    image_out13x53 = timer.count('[Average k=13x53]', filter.average, [image, utils.m_n_average_kernel(13, 53)])
 
     fig = plt.figure(figsize=(6, 4))
 
