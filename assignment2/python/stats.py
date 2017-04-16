@@ -26,15 +26,14 @@ def quick_median(array):
         array = array.flatten()
 
     length = len(array)
+    position = length / 2
 
     # Odd
     if length % 2 == 1:
-        position = length / 2
         return _find_nth(array, position)
 
     # Even
     else:
-        position = len(array) / 2
         return (_find_nth(array, position - 1) + _find_nth(array, position)) / 2.0
 
 

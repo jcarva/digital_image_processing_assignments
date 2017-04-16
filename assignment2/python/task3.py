@@ -15,7 +15,7 @@ import filter
 
 
 def main():
-    image = utils.load_image('lenna.png')
+    image = utils.load_image('lena_headey_1024.jpg')
     image = color.rbg2gray(image)
 
     median_3 = timer.count('Median 3', filter.median, [image, 3, stats.median])

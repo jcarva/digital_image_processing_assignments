@@ -17,7 +17,6 @@ def average(image, kernel):
 
         return utils.merge_channels(b, g, r)
 
-
 def median(image, kernel_size, operation=np.median):
     border_size = kernel_size // 2
     rows, columns, channels = utils.image_shape(image)
