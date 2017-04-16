@@ -1,4 +1,5 @@
 from random import randrange
+import sort
 import numpy as np
 
 
@@ -7,7 +8,7 @@ def median(array):
         array = array.flatten()
 
     length = len(array)
-    array.sort()
+    sort.sort(array)
 
     # Odd
     if length % 2 == 1:
