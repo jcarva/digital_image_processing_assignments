@@ -3,7 +3,7 @@
 %   b. Expansão de histograma.
 function task1()
     assetsDir = ['..' filesep 'assets' filesep];
-    filePath = strcat(assetsDir, 'lenna.png');
+    filePath = strcat(assetsDir, 'underexposed2.jpg');
     originalImage = imread(filePath);
 
     [~, ~, channels] = size(originalImage);

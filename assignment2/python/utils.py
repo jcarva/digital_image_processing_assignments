@@ -11,6 +11,10 @@ def plt_load_image(filename):
     return plt.imread('../assets/' + filename)
 
 
+def save_image(filename, image):
+    cv2.imwrite('../output/' + filename, image)
+
+
 def display_single_image(title, image):
     cv2.imshow(title, image.astype('uint8'))
 
