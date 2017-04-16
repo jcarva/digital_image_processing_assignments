@@ -1,5 +1,9 @@
 # coding=UTF-8
 
+# 1. Para uma imagem com baixo contraste, implemente as operações:
+#   a. Equalização de histograma;
+#   b. Expansão de histograma.
+
 import utils
 import histogram as hist
 import matplotlib.pyplot as plt

@@ -1,4 +1,12 @@
 # coding=UTF-8
+
+# Produza uma pilha com 15 imagens da mesma paisagem com ruídos diferentes. Pode-se
+# gerar um ruido aleatório para uma única imagem, utilizar uma câmera que tire várias
+# fotos seguidas ou converter os frames de um vídeo de câmera estática em imagens.
+# Aplique:
+#   a. Filtragem por Média de Imagens;
+#   b. Filtragem por Mediana de Imagens.
+
 import numpy as np
 import color
 import utils

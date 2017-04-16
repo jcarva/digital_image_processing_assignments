@@ -1,3 +1,8 @@
+# coding=UTF-8
+
+# 2. Para uma imagem com dimensões 1024x1024, calcule o tempo de processamento para:
+#   b. Aplicação do Filtro da Média Mx1 sobre a imagem resultante da aplicação do Filtro da Média 1xN;
+
 import matplotlib.pyplot as plt
 import filter
 import utils

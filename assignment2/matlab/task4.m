@@ -1,9 +1,10 @@
-% Produza uma pilha com 15 imagens da mesma paisagem com ruídos diferentes. Pode-se
-% gerar um ruído aleatório para uma única imagem, utilizar uma câmera que tire várias
-% fotos seguidas ou converter os frames de um vídeo de câmera estática em imagens.
+% Produza uma pilha com 15 imagens da mesma paisagem com ruÃ­dos diferentes. Pode-se
+% gerar um ruido aleatÃ³rio para uma Ãºnica imagem, utilizar uma cÃ¢mera que tire vÃ¡rias
+% fotos seguidas ou converter os frames de um vÃ­deo de cÃ¢mera estÃ¡tica em imagens.
 % Aplique:
-%   a. Filtragem por Média de Imagens;
+%   a. Filtragem por MÃ©dia de Imagens;
 %   b. Filtragem por Mediana de Imagens.
+
 function task4() 
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lenna.png');

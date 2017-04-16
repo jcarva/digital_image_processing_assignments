@@ -1,7 +1,13 @@
+# coding=UTF-8
+
+# 2. Para uma imagem com dimensões 1024x1024, calcule o tempo de processamento para:
+#   a. Aplicação do Filtro da Média MxN;
+
 import matplotlib.pyplot as plt
 import filter
 import utils
 import timer
+
 
 def main():
     image = utils.plt_load_image("lena_headey_1024.jpg")

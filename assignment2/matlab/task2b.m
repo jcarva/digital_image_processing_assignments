@@ -1,5 +1,6 @@
 % 2. Para uma imagem com dimensões 1024x1024, calcule o tempo de processamento para:
 %   b. Aplicação do Filtro da Média Mx1 sobre a imagem resultante da aplicação do Filtro da Média 1xN;
+
 function task2b()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'lena_headey_1024.jpg');

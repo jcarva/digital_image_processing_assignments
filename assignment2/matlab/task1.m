@@ -1,6 +1,7 @@
 % 1. Para uma imagem com baixo contraste, implemente as operações:
 %   a. Equalização de histograma;
 %   b. Expansão de histograma.
+
 function task1()
     assetsDir = ['..' filesep 'assets' filesep];
     filePath = strcat(assetsDir, 'underexposed2.jpg');
