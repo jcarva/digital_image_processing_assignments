@@ -3,7 +3,8 @@
 
 function task2a()
     assetsDir = ['..' filesep 'assets' filesep];
-    filePath = strcat(assetsDir, 'lena_headey_1024.jpg');
+    % filePath = strcat(assetsDir, 'lena_headey_1024.jpg');
+    filePath = strcat(assetsDir, 'lenna.png');
     originalImage = imread(filePath);
     
     averageImage_3x3 = averageTimer('[Average k=3x3]', @averageFilter, originalImage, [3 3]);

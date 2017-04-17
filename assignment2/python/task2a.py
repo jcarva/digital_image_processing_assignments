@@ -10,7 +10,8 @@ import timer
 
 
 def main():
-    image = utils.plt_load_image("lena_headey_1024.jpg")
+    # image = utils.plt_load_image("lena_headey_1024.jpg")
+    image = utils.plt_load_image("lenna.png")
     image = (image / float(image.max())) ** (1 / 1.0)
 
     print("Shape:", image.shape)
